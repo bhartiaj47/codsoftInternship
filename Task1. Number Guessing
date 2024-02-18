@@ -1,0 +1,55 @@
+
+import java.util.Scanner;
+import java.util.Random;
+
+public class NumberGuessingGame {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        Random random=new Random();
+        int score=0;
+        System.out.println("welcome to guessing Game");
+
+        boolean playagain=true;
+        while(playagain==true){
+
+            int randomno=random.nextInt(100);
+            int attempts=0;
+            boolean iscorrect=false;
+            while(attempts<5 && iscorrect==false ){
+                System.out.println(" Guess Number:");
+                int guessednumber=sc.nextInt();
+                attempts++;
+                if(guessednumber==randomno){
+                    System.out.println("congrats your guessed is correct");
+                    iscorrect=true;
+                }
+                else if(guessednumber>randomno){
+                    System.out.println(" too high,try again!");
+
+                }
+                else{
+                    System.out.println(" too low,try again!");
+                }
+
+            }
+            if(iscorrect==false) {
+                System.out.println("your attempts are over");
+                score=score;
+            }
+            else {
+                score=(6-attempts);
+                System.out.println("you win");
+            }
+            System.out.println("correct answer is "+randomno);
+            System.out.println("your score is"+score);
+            System.out.println(" you want to playAgain[yes/no]");
+            String again=sc.next();
+            if(again.equalsIgnoreCase("no")){
+                break;
+            }
+
+        }
+        System.out.println("Thanks for playing Guessing Game");
+
+    }
+}
